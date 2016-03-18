@@ -1,0 +1,7 @@
+                {% if not field.is_hidden %}
+                <label class="control-label">{{ field.label }}</label>
+                <div class="controls">{{ field }}</div>
+                {% else %}
+                <label class="control-label">{{ field.label }}</label>
+                <input class="controls" value="{{ post.pk }} ">{{ field }}</input>
+                {% endif %}

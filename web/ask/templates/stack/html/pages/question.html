@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" type="text/css" media="screen">
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text }}</p>
+    {% for e in form.non_field_errors %}
+    <div class="alert alert-danger">{{ e }}</div>
+    {% endfor %}
+    <form class="form-horizontal" method="post" action="/questionansw/">
+        {% csrf_token %}
+        <fieldset>
+            {% for field in form %}
+            <div class="control-group{% if field.errors %}has-error{% endif%}">
+                <label class="control-label">{{ field.label }}</label>
+                <div class="controls">{{ field }}</div>
+            </div>
+            {% endfor %}
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Answer</button>
+        </div>
+    </form>
+    {% for obj in answers %}
+        <p>{{ obj.text }}</p>
+        <br>
+    {% endfor %}
+
+
+
+
+</body>
+</html>
