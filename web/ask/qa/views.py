@@ -150,7 +150,8 @@ def question_answ(request):
         if form.is_valid():
             question = Question.objects.get(id=form.cleaned_data['question'])
             text = form.cleaned_data['text']
-            answer = form.save(question, text)
+            user = request.user
+            answer = form.save(question, text, user)
             url = answer.get_url()
             return HttpResponseRedirect(url)
     return HttpResponseRedirect('/')
@@ -181,7 +182,7 @@ def ask(request):
     if request.method == 'POST':
         form = AskForm(request.POST)
         if form.is_valid():
-            question = form.save()
+            question = form.save(request.user)
             url = question.get_url()
             return HttpResponseRedirect(url)
     else:

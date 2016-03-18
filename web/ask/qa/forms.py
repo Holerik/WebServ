@@ -23,8 +23,9 @@ class AskForm(forms.Form):
         if not is_ethic(title):
             raise forms.ValidationError(u'Message not correct', code=12)
         return title
-    def save(self):
+    def save(self, user):
         question = models.Question(**self.cleaned_data)
+        question.author = user
         question.save()
         return question
 
@@ -44,9 +45,9 @@ class AnswerForm(forms.Form):
         if not is_ethic(text):
             raise forms.ValidationError(u'Message not correct', code=12)
         return text
-    def save(self, question, text):
+    def save(self, question, text, user):
 
-        answer = models.Answer(text=text, question=question)
+        answer = models.Answer(text=text, question=question, author=user)
         answer.save()
         return answer
 
