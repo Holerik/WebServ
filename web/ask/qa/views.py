@@ -45,11 +45,17 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            response = HttpResponseRedirect('/')
+            user123 = form.save()
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+            auth.login(request, user)
             #sessid = do_login(login, password)
             #response.set_cookie('sessid', sessid, httponly=True, expires = dt.datetime.now() + dt.timedelta(days=5))
-            return response
+            return HttpResponseRedirect('/')
+        else:
+            form = SignupForm()
+            return HttpResponseRedirect('/')
     else:
         form = SignupForm()
     return render(request, 'stack/html/pages/signup_form.html',
