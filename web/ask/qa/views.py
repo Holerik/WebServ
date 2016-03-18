@@ -30,7 +30,7 @@ def login(request):
                 if user.is_active:
                     print(request.user)
                     auth.login(request, user)
-                    return HttpResponseRedirect('/question/2/')
+                    return HttpResponseRedirect('/')
                 else:
                     logout(request)
             else:
@@ -42,6 +42,7 @@ def login(request):
                   }
                   )
 def signup(request):
+    print ('/signup/')
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -83,6 +84,10 @@ def mysignup(request):
                       'form': form
                   }
                   )
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
 def mylogout(request):
     sessid = request.COOKIE.get('sessid')
     if sessid is not None:
@@ -157,6 +162,9 @@ def question_answ(request):
     return HttpResponseRedirect('/')
 
 def paginator_page(request):
+    print ('/paginator_page/')
+    user = request.user
+    print('user')
     questions = Question.objects.all()
     page = paginator(request, questions, '-id')
     page.paginator.baseurl = '/?page='
