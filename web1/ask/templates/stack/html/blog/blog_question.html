@@ -1,0 +1,26 @@
+{% extends "stack/html/blog/base_2.html" %}
+{% block content %}
+<div class="que-nav">
+    <div class="que-nav-item"> <a>New</a> </div>
+    <div class="que-nav-item"> <a>Popular</a> </div>
+</div>
+<div class="que">
+    {% for obj in posts %}
+    <div class="blog-que">
+        <div style="width: 30%">
+            <div class="blog-que-rating">
+                <div class="blog-que-text"><b>{{ obj.rating }}</b></div>
+            </div>
+        </div>
+        <div class="blog-que-main">
+            <h2>{{ obj.title }}</h2>
+            <p><i>With ladies and chees of course</i></p>
+            <div><a class="que-links">Read answers()</a><a class="que-links">Answer</a><a class="que-links">Like</a><a>Dislike</a></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

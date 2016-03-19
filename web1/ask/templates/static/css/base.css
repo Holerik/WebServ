@@ -1,0 +1,87 @@
+/*#header, #PA {     overflow: auto;  }*/
+#body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: beige; border-bottom: 2px solid black;
+    height: 125px;
+}
+#header {
+    width: 500px;
+    height: 125px;
+    position: absolute;
+    top: 0;
+    left: 10%;
+}
+#PA {
+    position: absolute;
+    left: 50px;
+    top: 18px;
+    width: 200px;
+    color: forestgreen;
+}
+#search {
+    position: absolute;
+    left: 250px;
+    width: 150px;
+    top: 45px;
+}
+#search input{
+    border-radius: 7px;
+    outline: none;
+    height: 30px;
+    font-size: 10pt;
+    background-image: url("../pic/search.png");
+    background-repeat: no-repeat;
+    background-position: 0% 50%, 100% 100%;
+    text-indent: 15px;
+    background-size: 18px;
+    background-color: floralwhite;
+}
+#search input:focus{
+    outline: none;
+    background: none;
+    background-color: white;
+    content: "";
+    text-indent: 5px;
+}
+#search input:focus::-webkit-input-placeholder {color: transparent}
+#search input:focus::-moz-placeholder          {color: transparent}
+#search input:focus:-moz-placeholder           {color: transparent}
+#search input:focus:-ms-input-placeholder      {color: transparent}
+#but1{
+    position: absolute;
+    background-color: forestgreen;
+    width: 50px;
+    height: 29px;
+    left: 407px;
+    top: 45px;
+    border: none;
+    color: white;
+}
+#login{
+    position: absolute;
+    left: 600px;
+    width: 300px;
+    height: 125px;
+    background: inherit;
+}
+
+#login div:nth-child(1){
+    float: left;
+    padding: 5px;
+}
+#login div:nth-child(2) {
+    float: left;
+}
+#login div:nth-child(2) p{
+    margin-left: 40px;
+    margin-top: 30px;
+    color: brown;
+}
+#login div:nth-child(2) a{
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
